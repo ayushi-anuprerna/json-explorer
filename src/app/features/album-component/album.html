@@ -1,3 +1,5 @@
-@for(album of store_album;track album.id){
-<app-card [data]="album"></app-card>
-}
+<div class="grid grid-cols-3 gap-2">
+    @for(album of store_album;track album.id){
+    <app-card [data]="album"></app-card>
+    }
+</div>
