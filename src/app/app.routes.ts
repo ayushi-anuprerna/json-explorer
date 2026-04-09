@@ -6,9 +6,10 @@ import { Component } from '@angular/core';
 import { devOnlyGuardedExpression } from '@angular/compiler';
 
 export const routes: Routes = [
-    {path:"",component:AlbumComponent},
+    {path:"",component:AlbumComponent}, //for demo purpose I have set album as default route
     {path:"post",component:PostComponent},
     {path:"album",component:AlbumComponent},
     {path:"todos",component:TodosComponent},
+    {path:"**",redirectTo:"/album"} //for any invalid route it will redirect to album component - demo purpose
 ];
 
