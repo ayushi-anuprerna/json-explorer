@@ -1,3 +1,5 @@
-@for(todos of store_todos;track todos.id){
+<div class="grid grid-cols-3 gap-2">
+    @for(todos of store_todos;track todos.id){
     <app-card [data]="todos"></app-card>
-}
+    }
+</div>
