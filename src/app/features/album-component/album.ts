@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './album.html',
   styleUrl: './album.css',
 })
-export class Album {
+export class AlbumComponent {
 
 }

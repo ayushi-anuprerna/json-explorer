@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Post } from '../interface/post';
-import { Album } from '../../features/album-component/album';
-import { Todos } from '../../features/todos-component/todos';
+import { Album } from '../interface/album';
+import { Todos } from '../interface/todos';
 @Injectable({
   providedIn: 'root',
 })

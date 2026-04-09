@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './todos.html',
   styleUrl: './todos.css',
 })
-export class Todos {
+export class TodosComponent {
 
 }
