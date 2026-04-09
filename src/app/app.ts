@@ -11,13 +11,6 @@ import { Post } from './core/interface/post';
 })
 export class App {
   protected readonly title = signal('json-explorer');
-  display_post_data:Post[]=[]
-  constructor(private _api:ApiService){
-    this._api.getPosts().subscribe((post)=>{
-      this.display_post_data=post
-      console.log(this.display_post_data)
-    })
-  }
 
 
 }
