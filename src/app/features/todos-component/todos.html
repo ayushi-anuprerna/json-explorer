@@ -1,1 +1,3 @@
-<p>todos works!</p>
+@for(todos of store_todos;track todos.id){
+    <app-card [data]="todos"></app-card>
+}

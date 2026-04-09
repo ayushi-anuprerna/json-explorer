@@ -1,1 +1,3 @@
-<p>post works!</p>
+@for(post of store_post;track post.id){
+<app-card [data]="post"></app-card>
+}

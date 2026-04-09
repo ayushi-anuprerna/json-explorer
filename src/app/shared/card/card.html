@@ -1,0 +1,20 @@
+<section class="flex">
+<div class="grid grid-cols-1 border border-black w-1/4 rounded-2xl p-5 m-6">
+    <div class="flex ">
+<p>test</p>
+<p class="text-gray-600 ml-auto">#{{data.id}}</p>
+</div>
+<div>
+<p class="font-bold text-xl text-black mb-3">{{data.title}}</p>
+@if ('body' in data ) {
+<p class="mb-3">{{data.body}}</p>
+}
+</div>
+<div>
+<p class="border p-1.5 bg-purple-300 text-purple-800 text-center">User ID: {{data.userId}}</p>
+</div>
+@if ('completed' in data ) {
+    <p>{{data.completed}}</p>
+}
+</div>
+</section>
