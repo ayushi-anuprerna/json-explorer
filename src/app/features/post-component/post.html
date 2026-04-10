@@ -1,5 +1,13 @@
+@if(isLoading){
+    <app-loader></app-loader>
+}
+@else if (errorMsg) {
+    <p>Error occurred {{errorMsg}}</p>
+}
+@else{
 <div class="grid grid-cols-3 gap-2">
 @for(post of store_post;track post.id){
     <app-card [data]="post"></app-card>
 }
 </div>
+}

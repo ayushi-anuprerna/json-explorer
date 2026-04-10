@@ -1,5 +1,16 @@
+@if(isloading){
+    <app-loader></app-loader>
+}
+@else if (errorMsg) {
+    <div class="mt-15 w-100 justify-center h-100 border border-black">
+        
+    <p class="text-red-600 font-serif text-center p-5 ">{{errorMsg}}</p>
+        </div>
+}
+@else {
 <div class="grid grid-cols-3 gap-2">
     @for(todos of store_todos;track todos.id){
     <app-card [data]="todos"></app-card>
     }
 </div>
+}

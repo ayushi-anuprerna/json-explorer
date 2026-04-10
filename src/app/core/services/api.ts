@@ -16,14 +16,14 @@ export class ApiService {
   constructor(private _http:HttpClient){}
 
   public getPosts():Observable<Post[]>{
-    return this._http.get<Post[]>(`${this.base_url}/posts`)
+    return this._http.get<Post[]>(`${this.base_url}/postss`)
   }
   
   public getAlbums():Observable<Album[]>{
-    return this._http.get<Album[]>(`${this.base_url}/albums`)
+    return this._http.get<Album[]>(`${this.base_url}/albumss`)
   }
 
   public getTodos():Observable<Todos[]>{
-    return this._http.get<Todos[]>(`${this.base_url}/todos`)
+    return this._http.get<Todos[]>(`${this.base_url}/todoss`)
   }
 }
