@@ -16,14 +16,14 @@ export class ApiService {
   constructor(private _http:HttpClient){}
 
   public getPosts():Observable<Post[]>{
-    return this._http.get<Post[]>(`${this.base_url}/postss`)
+    return this._http.get<Post[]>(`${this.base_url}/posts`)
   }
   
   public getAlbums():Observable<Album[]>{
-    return this._http.get<Album[]>(`${this.base_url}/albumss`)
+    return this._http.get<Album[]>(`${this.base_url}/albumss`) //intentionally wrong to see error loader message
   }
 
   public getTodos():Observable<Todos[]>{
-    return this._http.get<Todos[]>(`${this.base_url}/todoss`)
+    return this._http.get<Todos[]>(`${this.base_url}/todos`)
   }
 }
