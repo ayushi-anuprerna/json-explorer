@@ -60,7 +60,7 @@ export class PostComponent implements OnInit{
     }
     
   );
-    this.search.valueChanges.pipe(distinctUntilChanged()).subscribe((searchTitle) => {
+    this.search.valueChanges.pipe(debounceTime(200),distinctUntilChanged()).subscribe((searchTitle) => {
         this.filterPosts(searchTitle || '');
       });
   }
