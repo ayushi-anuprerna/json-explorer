@@ -1,23 +1,38 @@
-@if(isLoading){
-    <app-loader></app-loader>
-}
-@else if (errorMsg) {
-    <div class="flex items-center justify-center min-h-screen bg-gray-100 p-4">
+@if (isLoading) {
+  <app-loader></app-loader>
+} @else if (errorMsg) {
+  <div class="flex items-center justify-center min-h-screen bg-gray-100 p-4">
     <div class="bg-white rounded-lg shadow-2xl p-12 max-w-md w-full border-l-4 border-red-500">
-        <div class="flex flex-col items-center justify-center h-full">
-            <div class="mb-8">
-                <i class="fa-regular fa-circle-xmark text-red-500 text-8xl"></i>
-            </div>
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Oops!</h2>
-            <p class="text-red-600 font-medium text-center text-lg mb-8">{{errorMsg}}</p>
+      <div class="flex flex-col items-center justify-center h-full">
+        <div class="mb-8">
+          <i class="fa-regular fa-circle-xmark text-red-500 text-8xl"></i>
         </div>
+        <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Oops!</h2>
+        <p class="text-red-600 font-medium text-center text-lg mb-8">{{ errorMsg }}</p>
+      </div>
     </div>
-</div>
-}
-@else{
-<div class="grid grid-cols-3 gap-2">
-@for(post of store_post;track post.id){
-    <app-card [data]="post"></app-card>
-}
-</div>
+  </div>
+} @else {
+  <div class="p-6">
+    <div class="mb-6">
+      <input
+        type="text"
+        [formControl]="search"
+        class="border border-black w-full px-4 py-2 m-5 mr-55 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Search by title"
+      />
+    </div>
+    <div class="grid grid-cols-3 gap-2">
+      @for (post of filteredPosts; track post.id) {
+        <app-card [data]="post"></app-card>
+      }
+    </div>
+    @if (filteredPosts.length === 0 && search.value) {
+      <div class="text-center text-gray-500 mt-8">
+        <p>
+          No posts found for <strong>{{ search.value }}</strong>
+        </p>
+      </div>
+    }
+  </div>
 }
