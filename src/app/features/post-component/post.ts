@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, effect } from '@angular/core';
 import { Post } from '../../core/interface/post';
 import { ApiService } from '../../core/services/api';
 import { Card } from '../../shared/card/card';
@@ -15,7 +15,7 @@ import { OnInit } from '@angular/core';
   styleUrl: './post.css',
 })
 
-export class PostComponent //implements OnInit
+export class PostComponent
 {
   public search=new FormControl('')
   public isLoading:boolean=true
@@ -26,51 +26,54 @@ export class PostComponent //implements OnInit
 
   constructor(private _api: ApiService) {
     this._api.getPosts()
-    console.log(this._api.posts)
-  }
-  // ngOnInit(){
 
-  //   this._api.getPosts().subscribe({
-  //     next: (post: Post[]) => {
-  //     this.store_post=post
-  //     this.filteredPosts=post
-  //     this.isLoading=false
-  //   },
-  //   error: (error: HttpErrorResponse)=>{
-  //     this.errorMsg=error.message
-  //     this.errorCode=error.status
-  //     this.isLoading=false
-
-  //     const code=Math.floor(this.errorCode/100)
-  //     switch (code){
-  //       case 1:
-  //       this.errorMsg="Your request is being processed.Please wait.."
-  //       break;
-  //     case 2:
-  //       this.errorMsg="Request successfull.Data loaded properly"
-  //       break;
-  //     case 3:
-  //       this.errorMsg="You are being redirected.Please wait.."
-  //       break;
-  //     case 4:
-  //       this.errorMsg="There was an issue with your request.Please check and try again"
-  //       break;
-  //     case 5:
-  //       this.errorMsg="Something went wrong on our side.Please try again later"
-  //       break;
-  //     default:
-  //       this.errorMsg="Cannot recognize"
-  //       break;
-
-  //     }
-  //   } 
-  //   }
+    effect(()=> {
+       if(this._api.posts().length>0){
+      this.store_post=this._api.posts()
+      this.filteredPosts=this._api.posts()
+      this.isLoading=false
     
-  // );
-  //   this.search.valueChanges.pipe(debounceTime(200),distinctUntilChanged()).subscribe((searchTitle) => {
-  //       this.filterPosts(searchTitle || '');
-  //     });
-  // }
+
+    }
+    }),
+    effect(()=> {
+      if(this._api.posts_error()?.status){
+        this.errorMsg=this._api.posts_error()?.message || "unknown error"
+      this.errorCode=this._api.posts_error()?.status || 0
+      this.isLoading=false  
+      
+      const code=Math.floor(this.errorCode/100)
+      switch (code){
+        case 1:
+        this.errorMsg="Your request is being processed.Please wait.."
+        break;
+      case 2:
+        this.errorMsg="Request successfull.Data loaded properly"
+        break;
+      case 3:
+        this.errorMsg="You are being redirected.Please wait.."
+        break;
+      case 4:
+        this.errorMsg="There was an issue with your request.Please check and try again"
+        break;
+      case 5:
+        this.errorMsg="Something went wrong on our side.Please try again later"
+        break;
+      default:
+        this.errorMsg="Cannot recognize"
+        break;
+      }
+      }
+    })
+      
+
+      
+    
+    
+    this.search.valueChanges.pipe(debounceTime(200),distinctUntilChanged()).subscribe((searchTitle) => {
+        this.filterPosts(searchTitle || '');
+      });
+  }
 private filterPosts(searchTerm:string):void{
   const term=searchTerm.toLowerCase().trim();
   if(!term){

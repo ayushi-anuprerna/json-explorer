@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Post } from '../interface/post';
 import { Album } from '../interface/album';
 import { Todos } from '../interface/todos';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -17,6 +18,10 @@ export class ApiService {
   public albums = signal<Album[]>([])
   public todos = signal<Todos[]>([])
 
+  public posts_error = signal<HttpErrorResponse | null>(null)
+  public albums_error = signal<HttpErrorResponse | null>(null)
+  public todos_error = signal<HttpErrorResponse | null>(null)
+
   constructor(private _http:HttpClient){}
 
   public getPosts():void{
@@ -25,7 +30,8 @@ export class ApiService {
       this.posts.set(post)
     },
     error: (error: HttpErrorResponse) => {
-      console.log(error)
+      this.posts_error.set(error)
+
     }
   })
   }
@@ -36,7 +42,7 @@ export class ApiService {
         this.albums.set(album)
       },
       error: (error: HttpErrorResponse) => {
-        console.log(error)
+        this.albums_error.set(error)
       }
     }) //intentionally wrong to see error loader message
   }
@@ -47,7 +53,7 @@ export class ApiService {
         this.todos.set(todos)
       },
       error: (error: HttpErrorResponse) => {
-        console.log(error)
+        this.todos_error.set(error)
       }
     })
   }
