@@ -24,7 +24,12 @@
     </div>
     <div class="grid grid-cols-3 gap-2">
       @for (post of filteredPosts; track post.id) {
-        <app-card [data]="post"></app-card>
+        <app-card [id]="post.id"
+        [body]="post.body"
+        [title]="post.title"
+        [userId]="post.userId"
+        
+        ></app-card>
       }
     </div>
     @if (filteredPosts.length === 0 && search.value) {

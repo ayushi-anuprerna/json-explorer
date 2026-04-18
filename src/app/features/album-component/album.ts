@@ -1,9 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, effect, OnInit } from '@angular/core';
-import { Album } from '../../core/interface/album';
+import { Album } from '../../core/interface/album-interface';
 import { ApiService } from '../../core/services/api';
-import { Card } from '../../shared/card/card';
-import { Loader } from '../../shared/loader/loader';
+import { Card } from '../../shared/card-component/card-component';
+import { Loader } from '../../shared/loader-component/loader-component';
 
 @Component({
   selector: 'app-album',

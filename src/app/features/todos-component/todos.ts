@@ -1,8 +1,8 @@
 import { Component, effect } from '@angular/core';
 import { ApiService } from '../../core/services/api';
-import { Todos } from '../../core/interface/todos';
-import { Card } from '../../shared/card/card';
-import { Loader } from '../../shared/loader/loader';
+import { Todos } from '../../core/interface/todos-interface';
+import { Card } from '../../shared/card-component/card-component';
+import { Loader } from '../../shared/loader-component/loader-component';
 import { delay,distinctUntilChanged} from 'rxjs';
 import { error } from 'console';
 import { HttpErrorResponse } from '@angular/common/http';

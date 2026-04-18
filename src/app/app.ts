@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavBar } from './shared/nav-bar/nav-bar';
+import { NavBar } from './shared/nav-bar-component/nav-bar-component';
 import { ApiService } from './core/services/api';
-import { Post } from './core/interface/post';
+import { Post } from './core/interface/post-interface';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet,NavBar],

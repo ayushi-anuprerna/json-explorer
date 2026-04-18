@@ -19,7 +19,10 @@
 
 <div class="grid grid-cols-3 gap-2">
     @for(album of store_album;track album.id){
-    <app-card [data]="album"></app-card>
+    <app-card [id]="album.id"
+        [title]="album.title"
+        [userId]="album.userId"
+    ></app-card>
     }
 </div>
 }

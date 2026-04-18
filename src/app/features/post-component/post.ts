@@ -1,8 +1,8 @@
 import { Component, effect } from '@angular/core';
-import { Post } from '../../core/interface/post';
+import { Post } from '../../core/interface/post-interface';
 import { ApiService } from '../../core/services/api';
-import { Card } from '../../shared/card/card';
-import { Loader } from '../../shared/loader/loader';
+import { Card } from '../../shared/card-component/card-component';
+import { Loader } from '../../shared/loader-component/loader-component';
 import { delay,debounceTime,distinctUntilChanged } from 'rxjs';
 import { error } from 'console';
 import { HttpErrorResponse } from '@angular/common/http';

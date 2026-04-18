@@ -17,7 +17,10 @@
 @else {
 <div class="grid grid-cols-3 gap-2">
     @for(todos of store_todos;track todos.id){
-    <app-card [data]="todos"></app-card>
+    <app-card [id]="todos.id"
+            [title]="todos.title"
+            [completed]="todos.completed"
+            [userId]="todos.userId" ></app-card>
     }
 </div>
 }

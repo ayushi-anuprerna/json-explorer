@@ -1,9 +1,9 @@
 import { Injectable, signal } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Post } from '../interface/post';
-import { Album } from '../interface/album';
-import { Todos } from '../interface/todos';
+import { Post } from '../interface/post-interface';
+import { Album } from '../interface/album-interface';
+import { Todos } from '../interface/todos-interface';
 
 @Injectable({
   providedIn: 'root',
