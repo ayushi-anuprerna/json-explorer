@@ -1,19 +1,22 @@
 <div class="border border-black rounded-2xl p-5 m-6">
-    <div class="flex ">
-        <p class="text-gray-600 ml-auto">#{{id}}</p>
-    </div>
-    <div>
-        <p class="font-bold text-xl text-black mb-3">{{title}}</p>
-        @if (body ) {
-        <p class="mb-3">{{body}}</p>
-        }
-    </div>
-    <div>
-        <p class="border p-1.5 bg-purple-300 text-purple-800 text-center">User ID: {{userId}}</p>
-    </div>
-    @if (completed ) {
-            <p class="border p-1.5 bg-green-300 text-green-900 text-center mt-3">Completed</p>
-    } @else {
-            <p class="border p-1.5 bg-red-300 text-red-900 text-center mt-3">Not Completed</p>
+  <div class="flex">
+    <p class="text-gray-600 ml-auto">#{{ id }}</p>
+  </div>
+  <div>
+    <p class="font-bold text-xl text-black mb-3">{{ title }}</p>
+    @if (body) {
+      <p class="mb-3">{{ body }}</p>
     }
-</div>  
+  </div>
+  <div>
+    <p class="border p-1.5 bg-purple-300 text-purple-800 text-center">User ID: {{ userId }}</p>
+  </div>
+
+  @if (completed != undefined) {
+    @if (completed) {
+      <p class="border p-1.5 bg-green-300 text-green-900 text-center mt-3">Completed</p>
+    } @else {
+      <p class="border p-1.5 bg-red-300 text-red-900 text-center mt-3">Not Completed</p>
+    }
+  }
+</div>
