@@ -8,9 +8,11 @@ import { error } from 'console';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormControl, Validators ,ReactiveFormsModule } from '@angular/forms';
 import { OnInit } from '@angular/core';
+import { ErrorHandler } from '../../error-handler/error-handler';
+
 @Component({
   selector: 'app-post',
-  imports: [Card,Loader,ReactiveFormsModule],
+  imports: [Card,Loader,ReactiveFormsModule,ErrorHandler],
   templateUrl: './post.html',
   styleUrl: './post.css',
 })
@@ -42,27 +44,8 @@ export class PostComponent
       this.errorCode=this._api.posts_error()?.status || 0
       this.isLoading=false  
       
-      const code=Math.floor(this.errorCode/100)
-      switch (code){
-        case 1:
-        this.errorMsg="Your request is being processed.Please wait.."
-        break;
-      case 2:
-        this.errorMsg="Request successfull.Data loaded properly"
-        break;
-      case 3:
-        this.errorMsg="You are being redirected.Please wait.."
-        break;
-      case 4:
-        this.errorMsg="There was an issue with your request.Please check and try again"
-        break;
-      case 5:
-        this.errorMsg="Something went wrong on our side.Please try again later"
-        break;
-      default:
-        this.errorMsg="Cannot recognize"
-        break;
-      }
+     
+  
       }
     })
       

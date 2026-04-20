@@ -4,10 +4,10 @@ import { Album } from '../../core/interface/album-interface';
 import { ApiService } from '../../core/services/api';
 import { Card } from '../../shared/card-component/card-component';
 import { Loader } from '../../shared/loader-component/loader-component';
-
+import { ErrorHandler } from '../../error-handler/error-handler';
 @Component({
   selector: 'app-album',
-  imports: [Card,Loader],
+  imports: [Card, Loader, ErrorHandler],
   templateUrl: './album.html',
   styleUrl: './album.css',
 })
@@ -36,27 +36,6 @@ constructor(private _api:ApiService){
        this.isLoading=false
       
       
-       const code=Math.floor(this.errorCode/100)
-       switch(code){
-         case 1:
-          this.errorMsg="Your request is being processed.Please wait.."
-          break;
-        case 2:
-          this.errorMsg="Request successfull.Data loaded properly"
-          break;
-        case 3:
-          this.errorMsg="You are being redirected.Please wait.."
-          break;
-        case 4:
-          this.errorMsg="There was an issue with your request.Please check and try again"
-          break;
-        case 5:
-          this.errorMsg="Something went wrong on our side.Please try again later"
-          break;
-        default:
-          this.errorMsg="Cannot recognize"
-          break;
-      }
     }
   })
 
